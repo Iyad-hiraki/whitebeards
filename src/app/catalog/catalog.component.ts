@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { IClass } from './class.model';
 import { CatalogRepositoryService } from './catalog-repository.service';
 import { UserRepositoryService } from '../services/user-repository.service';
+import { FilterClassesService } from './filter-classes.service';
 
 @Component({
   styleUrls: ['./catalog.component.css'],
   templateUrl: './catalog.component.html'
 })
-export class CatalogComponent {
+export class CatalogComponent implements OnInit {
   classes: IClass[] = [];
   visibleClasses: IClass[] = [];
 
-  constructor(private catalogRepository: CatalogRepositoryService, public userRepository: UserRepositoryService) { }
+  constructor(private catalogRepository: CatalogRepositoryService, public userRepository: UserRepositoryService, private filrerClassesService: FilterClassesService) { }
 
   ngOnInit() {
     this.catalogRepository.getCatalog()
@@ -38,23 +39,7 @@ export class CatalogComponent {
   }
 
   applyFilter(filter: string) {
-    if (!filter) {
-      this.visibleClasses = this.classes;
-      return;
-    }
-
-    if (filter === 'GEN') {
-      this.showOnlyGeneralCourses();
-    } else {
-      this.visibleClasses = this.classes.filter(c => c.course.courseNumber.startsWith(filter));
-    }
+    this.visibleClasses = this.filrerClassesService.filterClasses(filter,this.classes);
   }
 
-  private showOnlyGeneralCourses() {
-    this.visibleClasses = this.classes.filter(c => 
-      !c.course.courseNumber.startsWith('CH') &&
-      !c.course.courseNumber.startsWith('PO') &&
-      !c.course.courseNumber.startsWith('SP'));
-  }
-  
 }
