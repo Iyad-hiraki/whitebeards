@@ -4,7 +4,9 @@ import { Observable, EMPTY, throwError, timer, delay } from 'rxjs';
 
 import { IUser } from '../users/user.model';
 
-@Injectable()
+@Injectable(
+  {providedIn: 'root'}
+)
 export class UserRepositoryService {
   currentUser: IUser | null = null;
 
@@ -49,14 +51,14 @@ export class UserRepositoryService {
   signIn(credentials: any): Observable<any> {
     //Never, ever check credentials in client-side code.
     //This code is only here to supply a fake endpoint for signing in.
-    if (credentials.email !== 'me@whitebeards.edu' || credentials.password !== 'super-secret')
+    if (credentials.email !== 'iyad@test.test' || credentials.password !== '123')
       return throwError(() => new Error('Invalid login'));
 
     this.currentUser = {
       userId: 'e61aebed-dbc5-437a-b514-02b8380d8efc',
-      firstName: 'Jim',
-      lastName: 'Cooper',
-      email: 'me@whitebeards.edu',
+      firstName: 'Iyad',
+      lastName: 'Test',
+      email: 'iyad@test.test',
       classes: []
     };
 

@@ -10,7 +10,7 @@ import { UserRepositoryService } from "../services/user-repository.service"
   declarations: [NavBarComponent, AccountMenuComponent],
   imports: [ CommonModule, RouterModule ],
   exports: [NavBarComponent, AccountMenuComponent],
-  providers:[UserRepositoryService],
+  providers:[],
  
 })
 export class CordModule { }
