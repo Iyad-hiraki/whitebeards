@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CordModule } from './core/core.module';
 import { CatalogModule } from './catalog/catalog.module';
-import { UsersModule } from './users/users.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import { UsersModule } from './users/users.module';
     AppRoutingModule,
     CordModule,
     CatalogModule,
-    UsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

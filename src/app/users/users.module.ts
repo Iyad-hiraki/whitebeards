@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register.component';
 import { SignInComponent } from './sign-in.component';
+import { UserRoutingModule } from './user.routing.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SignInComponent } from './sign-in.component';
         SharedModule,
         ReactiveFormsModule,
         FormsModule,
-        CommonModule ],
+        CommonModule,
+        UserRoutingModule ],
     declarations: [RegisterComponent, SignInComponent],
     exports: [],
     providers:[],
