@@ -4,31 +4,24 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav-bar.component';
-import { CatalogComponent } from "./catalog/catalog.component";
-import { RegisterComponent } from "./users/register.component";
-import { SignInComponent } from "./users/sign-in.component";
-import { LoadingComponent } from "./components/loading-spinner.component";
-import { DataRepositoryService } from "./services/data-repository.service"
-import { AccountMenuComponent } from "./account-menu.component";
+import { CordModule } from './core/core.module';
+import { CatalogModule } from './catalog/catalog.module';
+import { UsersModule } from './users/users.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
-    CatalogComponent,
-    RegisterComponent,
-    SignInComponent,
-    LoadingComponent,
-    AccountMenuComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CordModule,
+    CatalogModule,
+    UsersModule
   ],
-  providers: [DataRepositoryService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
